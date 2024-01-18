@@ -13,7 +13,7 @@ int custom_no_int_error(unsigned int line_number);
  */
 int custom_usage_error(void)
 {
-    fprintf(stderr, "Error: Please provide the correct usage - monty <filename>\n");
+    fprintf(stderr, "Error: Usage - Please provide a Monty bytecode file as an argument\n");
     return (EXIT_FAILURE);
 }
 
@@ -41,26 +41,28 @@ int custom_f_open_error(char *filename)
 }
 
 /**
- * custom_unknown_op_error - Prints custom unknown operation error messages w/ opcode.
+ * custom_unknown_op_error - Prints custom unknown instruction error messages.
  * @opcode: Opcode where error occurred.
- * @line_number: Line number of the error in the Monty file.
+ * @line_number: Line number in Monty bytecode file where error occurred.
  *
  * Return: (EXIT_FAILURE) always.
  */
 int custom_unknown_op_error(char *opcode, unsigned int line_number)
 {
-    fprintf(stderr, "Error at line %u: Unknown instruction - '%s'\n", line_number, opcode);
+    fprintf(stderr, "Error at line %u: Unknown instruction - '%s'\n",
+            line_number, opcode);
     return (EXIT_FAILURE);
 }
 
 /**
- * custom_no_int_error - Prints custom no integer argument error messages.
- * @line_number: Line number of the error in the Monty file.
+ * custom_no_int_error - Prints custom invalid monty_push argument error messages.
+ * @line_number: Line number in Monty bytecode file where error occurred.
  *
  * Return: (EXIT_FAILURE) always.
  */
 int custom_no_int_error(unsigned int line_number)
 {
-    fprintf(stderr, "Error at line %u: Missing integer argument - Usage: push integer\n", line_number);
+    fprintf(stderr, "Error at line %u: Invalid argument for push - Usage: push integer\n",
+            line_number);
     return (EXIT_FAILURE);
 }
